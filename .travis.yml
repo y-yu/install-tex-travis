@@ -1,0 +1,11 @@
+os:
+  - osx
+  - linux
+dist: trusty
+sudo: required
+language: generic
+install:
+  - . ./install-tex.sh
+script:
+  - latex -v
+  - tlmgr --version
