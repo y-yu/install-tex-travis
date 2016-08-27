@@ -8,5 +8,6 @@ if [[ $TRAVIS_OS_NAME == 'osx' ]]; then
 else
   sudo add-apt-repository -y ppa:jonathonf/texlive-2016
   sudo apt-get update -qq
-  sudo apt-get install -y texlive
+  sudo apt-get install -y texlive xzdec
+  tlmgr init-usertree
 fi
