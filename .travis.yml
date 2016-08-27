@@ -8,4 +8,7 @@ install:
   - . ./install-tex.sh
 script:
   - latex -v
-  - tlmgr --version
+  - ./tlmgr.sh --version
+  - ./tlmgr.sh update --self --all
+  - ./tlmgr.sh install collection-langjapanese
+  - platex -v

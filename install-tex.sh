@@ -6,8 +6,9 @@ if [[ $TRAVIS_OS_NAME == 'osx' ]]; then
   rm BasicTeX.pkg
   export PATH=$PATH:/usr/texbin
 else
-  sudo add-apt-repository -y ppa:jonathonf/texlive-2016
-  sudo apt-get update -qq
-  sudo apt-get install -y texlive xzdec
+  wget https://github.com/scottkosty/install-tl-ubuntu/raw/master/install-tl-ubuntu && chmod +x ./install-tl-ubuntu
+  wget https://github.com/y-yu/install-tex-travis/raw/master/small.profile
+  sudo ./install-tl-ubuntu -p `pwd`/small.profile -q http://ctan.mirror.rafal.ca/systems/texlive/tlnet/
+  export PATH=$PATH:/opt/texbin
   tlmgr init-usertree
 fi
