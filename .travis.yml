@@ -1,7 +1,6 @@
 os:
   - osx
   - linux
-osx_image: xcode7.1
 dist: trusty
 sudo: required
 language: generic
