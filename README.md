@@ -9,13 +9,16 @@ Install Script for TeXLive2016 to OSX and Linux on Travis CI
 os:
   - osx
   - linux
+osx_image: xcode7.1
 dist: trusty
 sudo: required
 before_install:
   - wget https://raw.githubusercontent.com/y-yu/install-tex-travis/master/install-tex.sh
-  - chmod +x install-tex.sh
+  - wget https://raw.githubusercontent.com/y-yu/install-tex-travis/master/tlmgr.sh
+  - chmod +x install-tex.sh tlmgr.sh
 install:
   - . ./install-tex.sh
+  - ./tlmgr.sh update --self --all
 ```
 
 It is necessary to write `. ./install-tex.sh` on the install step because
