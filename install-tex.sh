@@ -10,7 +10,7 @@ if [[ $TRAVIS_OS_NAME == 'osx' ]]; then
   curl -L -O http://mirrors.concertpass.com/tex-archive/systems/mac/mactex/BasicTeX.pkg
   sudo installer -pkg BasicTeX.pkg -target /
   rm BasicTeX.pkg
-  export PATH=$PATH:/usr/texbin
+  export PATH=$PATH:/Library/TeX/texbin
 else
   wget https://raw.githubusercontent.com/scottkosty/install-tl-ubuntu/master/install-tl-ubuntu && chmod +x ./install-tl-ubuntu
   wget https://raw.githubusercontent.com/y-yu/install-tex-travis/master/small.profile
