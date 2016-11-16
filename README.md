@@ -17,7 +17,7 @@ before_install:
   - chmod +x install-tex.sh tlmgr.sh
 install:
   - . ./install-tex.sh
-  - ./tlmgr.sh update --self --all
+  - ./tlmgr.sh update --self --all || echo "ignore errors"
 ```
 
 It is necessary to write `. ./install-tex.sh` on the install step because
