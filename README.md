@@ -9,7 +9,6 @@ Install Script for TeXLive2016 to OSX and Linux on Travis CI
 os:
   - osx
   - linux
-osx_image: xcode7.1
 dist: trusty
 sudo: required
 before_install:
