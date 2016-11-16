@@ -9,6 +9,6 @@ install:
 script:
   - latex -v
   - ./tlmgr.sh --version
-  - ./tlmgr.sh update --self --all
+  - ./tlmgr.sh update --self --all || echo "ignore errors"
   - ./tlmgr.sh install collection-langjapanese
   - platex -v
