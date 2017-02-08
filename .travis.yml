@@ -2,7 +2,7 @@ os:
   - osx
   - linux
 dist: trusty
-sudo: required
+sudo: false
 language: generic
 install:
   - . ./install-tex.sh

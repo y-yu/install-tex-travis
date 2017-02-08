@@ -10,7 +10,7 @@ os:
   - osx
   - linux
 dist: trusty
-sudo: required
+sudo: false
 before_install:
   - wget https://raw.githubusercontent.com/y-yu/install-tex-travis/master/install-tex.sh
   - wget https://raw.githubusercontent.com/y-yu/install-tex-travis/master/tlmgr.sh
