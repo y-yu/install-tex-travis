@@ -1,7 +1,5 @@
 #!/bin/bash
 
-if [[ $TRAVIS_OS_NAME == 'osx' ]]; then
-  sudo tlmgr $@
-else
-  tlmgr $@
-fi
+# This is a script for backward compatibility.
+
+tlmgr $@

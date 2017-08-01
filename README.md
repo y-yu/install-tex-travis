@@ -13,11 +13,10 @@ dist: trusty
 sudo: false
 before_install:
   - wget https://raw.githubusercontent.com/y-yu/install-tex-travis/master/install-tex.sh
-  - wget https://raw.githubusercontent.com/y-yu/install-tex-travis/master/tlmgr.sh
-  - chmod +x install-tex.sh tlmgr.sh
+  - chmod +x install-tex.sh
 install:
   - . ./install-tex.sh
-  - ./tlmgr.sh update --self --all || echo "ignore errors"
+  - tlmgr update --self --all
 ```
 
 It is necessary to write `. ./install-tex.sh` on the install step because
