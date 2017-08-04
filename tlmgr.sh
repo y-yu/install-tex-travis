@@ -1,5 +1,3 @@
 #!/bin/bash
 
-# This is a script for backward compatibility.
-
-tlmgr $@
+tlmgr -repository http://ctan.sharelatex.com/tex-archive/systems/texlive/tlnet $@
