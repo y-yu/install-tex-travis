@@ -9,5 +9,5 @@ install:
 script:
   - latex -v
   - tlmgr --version
-  - tlmgr install collection-langjapanese
+  - ./tlmgr.sh install collection-langjapanese
   - platex -v
