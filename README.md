@@ -1,4 +1,4 @@
-Install Script for TeXLive2017 to OSX and Linux on Travis CI
+Install Script for TeXLive2017 to macOS and Linux on Travis CI
 ==============================================================
 
 [![Build Status](https://travis-ci.org/y-yu/install-tex-travis.svg?branch=master)](https://travis-ci.org/y-yu/install-tex-travis)
@@ -10,6 +10,7 @@ os:
   - osx
   - linux
 dist: trusty
+language: generic
 sudo: false
 before_install:
   - wget https://raw.githubusercontent.com/y-yu/install-tex-travis/master/install-tex.sh
