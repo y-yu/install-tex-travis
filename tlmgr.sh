@@ -1,3 +1,3 @@
 #!/bin/bash
 
-tlmgr -repository http://ctan.sharelatex.com/tex-archive/systems/texlive/tlnet $@
+tlmgr -repository http://mirrors.concertpass.com/tex-archive/systems/texlive/tlnet $@
