@@ -1,6 +1,7 @@
 #!/bin/bash
 
-set -e
+# Comment out to avoid an error on macOS
+# set -e
 
 DIRNAME=tl-`date +%Y_%m_%d_%H_%M_%S`
 
