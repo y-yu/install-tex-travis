@@ -3,6 +3,9 @@ os:
   - linux
 dist: trusty
 sudo: false
+matrix:
+  allow_failures:
+    - os: osx
 language: generic
 install:
   - . ./install-tex.sh
