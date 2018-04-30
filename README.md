@@ -1,4 +1,4 @@
-Install Script for TeXLive2017 to macOS and Linux on Travis CI
+Install Script for TeXLive2018 to macOS and Linux on Travis CI
 ==============================================================
 
 [![Build Status](https://travis-ci.org/y-yu/install-tex-travis.svg?branch=master)](https://travis-ci.org/y-yu/install-tex-travis)
