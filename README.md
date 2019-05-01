@@ -1,4 +1,4 @@
-Install Script for TeXLive2018 to macOS and Linux on Travis CI
+Install Script for TeXLive2019 to macOS and Linux on Travis CI
 ==============================================================
 
 [![Build Status](https://travis-ci.org/y-yu/install-tex-travis.svg?branch=master)](https://travis-ci.org/y-yu/install-tex-travis)
@@ -6,16 +6,27 @@ Install Script for TeXLive2018 to macOS and Linux on Travis CI
 ## How to use
 
 ```yml
-os:
-  - osx
-  - linux
-dist: trusty
-language: generic
+matrix:
+  include:
+    - os: osx
+      osx_image: xcode10.2
+
+    - os: linux
+      dist: trusty
+
+cache:
+  directories:
+    - $HOME/texlive
+    - $HOME/.texlive
+    - $HOME/texmf
+
 sudo: false
+
 before_install:
   - wget https://raw.githubusercontent.com/y-yu/install-tex-travis/master/install-tex.sh
   - wget https://raw.githubusercontent.com/y-yu/install-tex-travis/master/tlmgr.sh
   - chmod +x install-tex.sh tlmgr.sh
+
 install:
   - . ./install-tex.sh
   - ./tlmgr.sh install collection-langjapanese

@@ -1,14 +1,24 @@
-os:
-  - osx
-  - linux
-dist: trusty
-sudo: false
 matrix:
-  allow_failures:
+  include:
     - os: osx
+      osx_image: xcode10.2
+
+    - os: linux
+      dist: trusty
+
+cache:
+  directories:
+    - $HOME/texlive
+    - $HOME/.texlive
+    - $HOME/texmf
+
+sudo: false
+
 language: generic
+
 install:
   - . ./install-tex.sh
+
 script:
   - latex -v
   - tlmgr --version
