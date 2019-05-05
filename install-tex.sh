@@ -35,7 +35,7 @@ else
   export PATH=$PATH:$HOME/texlive/bin/x86_64-linux
 fi
 
-./install-tl -profile ./small.profile -repository http://ctan.mirror.rafal.ca/systems/texlive/tlnet
+bash ./install-tl -profile ./small.profile -repository http://ctan.mirror.rafal.ca/systems/texlive/tlnet
 tlmgr init-usertree
 
 cd ../..
