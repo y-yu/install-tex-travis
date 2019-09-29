@@ -9,10 +9,10 @@ Install Script for TeXLive2019 to macOS and Linux on Travis CI
 matrix:
   include:
     - os: osx
-      osx_image: xcode10.2
+      osx_image: xcode10.3
 
     - os: linux
-      dist: trusty
+      dist: bionic
 
 cache:
   directories:
