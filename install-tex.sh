@@ -11,7 +11,7 @@ cd $DIRNAME
 
 wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
 tar zxvf install-tl-unx.tar.gz
-cd install-tl-2019*/
+cd install-tl-2020*/
 
 BASE_PROFILE=$(cat << EOS
 selected_scheme scheme-small
