@@ -5,6 +5,19 @@
 
 DIRNAME=tl-`date +%Y_%m_%d_%H_%M_%S`
 
+if [[ $TRAVIS_OS_NAME == 'osx' ]]; then
+  export PATH=$PATH:$HOME/texlive/bin/x86_64-darwin
+else
+  export PATH=$PATH:$HOME/texlive/bin/x86_64-linux
+fi
+
+# Check if the texlive directory has been or not.
+# If a user would use cache the directory could be there.
+if [ -z `ls -A $HOME/texlive` ]; then
+  echo "${HOME}/texlive has already existed so skipped to install"
+  exit 0
+fi
+
 echo "make the install directory: $DIRNAME"
 mkdir $DIRNAME
 cd $DIRNAME
@@ -29,10 +42,8 @@ EOS
 
 if [[ $TRAVIS_OS_NAME == 'osx' ]]; then
   echo "$BASE_PROFILE\nbinary_x86_64-darwin 1" > ./small.profile
-  export PATH=$PATH:$HOME/texlive/bin/x86_64-darwin
 else
   echo "$BASE_PROFILE\nbinary_x86_64-linux 1" > ./small.profile
-  export PATH=$PATH:$HOME/texlive/bin/x86_64-linux
 fi
 
 chmod +x ./install-tl
