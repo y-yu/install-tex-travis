@@ -13,9 +13,9 @@ fi
 
 # Check if the texlive directory has been or not.
 # If a user would use cache the directory could be there.
-if [ -z `ls -A $HOME/texlive` ]; then
+if [ ! -z "`ls -A $HOME/texlive`" ]; then
   echo "${HOME}/texlive has already existed so skipped to install"
-  exit 0
+  return 0
 fi
 
 echo "make the install directory: $DIRNAME"
