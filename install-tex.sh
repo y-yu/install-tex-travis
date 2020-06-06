@@ -2,11 +2,14 @@
 
 # Comment out to avoid an error on macOS
 # set -e
+set -x
 
 DIRNAME=tl-`date +%Y_%m_%d_%H_%M_%S`
 
-if [[ $TRAVIS_OS_NAME == 'osx' ]]; then
+if [[ "$TRAVIS_OS_NAME" == 'osx' ]]; then
   export PATH=$PATH:$HOME/texlive/bin/x86_64-darwin
+elif [[ "$TRAVIS_OS_NAME" == 'windows' ]]; then
+  export PATH=$PATH:$HOME/texlive/bin/win32
 else
   export PATH=$PATH:$HOME/texlive/bin/x86_64-linux
 fi
@@ -22,11 +25,17 @@ echo "make the install directory: $DIRNAME"
 mkdir $DIRNAME
 cd $DIRNAME
 
-wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
-tar zxvf install-tl-unx.tar.gz
+if [[ "$TRAVIS_OS_NAME" == 'windows' ]]; then
+  curl -L -O http://mirror.ctan.org/systems/texlive/tlnet/install-tl.zip
+  unzip install-tl.zip
+else
+  curl -L -O http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
+  tar zxvf install-tl-unx.tar.gz
+fi
+
 cd install-tl-2020*/
 
-BASE_PROFILE=$(cat << EOS
+cat << EOS > ./small.profile
 selected_scheme scheme-small
 TEXDIR $HOME/texlive
 TEXMFCONFIG $HOME/.texlive/texmf-config
@@ -38,17 +47,25 @@ TEXMFVAR $HOME/.texlive/texmf-var
 option_doc 0
 option_src 0
 EOS
-)
 
-if [[ $TRAVIS_OS_NAME == 'osx' ]]; then
-  echo "$BASE_PROFILE\nbinary_x86_64-darwin 1" > ./small.profile
+if [[ "$TRAVIS_OS_NAME" == 'osx' ]]; then
+  echo "binary_x86_64-darwin 1" >> ./small.profile
+elif [[ "$TRAVIS_OS_NAME" == 'windows' ]]; then
+  echo "binary_win32 1" >> ./small.profile
 else
-  echo "$BASE_PROFILE\nbinary_x86_64-linux 1" > ./small.profile
+  echo "binary_x86_64-linux 1" >> ./small.profile
 fi
 
-chmod +x ./install-tl
-./install-tl -profile ./small.profile -repository http://ctan.mirror.rafal.ca/systems/texlive/tlnet
-tlmgr init-usertree
+if [[ "$TRAVIS_OS_NAME" == 'windows' ]]; then
+  echo y | ./install-tl-windows.bat -profile ./small.profile -repository http://ctan.mirror.rafal.ca/systems/texlive/tlnet/
+  echo "$(ls -la "$HOME/")"
+  ls 'C:\Users\travis'
+  tlmgr init-usertree
+else
+  chmod +x ./install-tl
+  ./install-tl -profile ./small.profile -repository http://ctan.mirror.rafal.ca/systems/texlive/tlnet
+  tlmgr init-usertree
+fi
 
 cd ../..
 

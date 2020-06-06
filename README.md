@@ -1,7 +1,7 @@
-Install Script for TeXLive2019 to macOS and Linux on Travis CI
+Install Script for TeXLive2020 to macOS and Linux on Travis CI
 ==============================================================
 
-[![Build Status](https://travis-ci.org/y-yu/install-tex-travis.svg?branch=master)](https://travis-ci.org/y-yu/install-tex-travis)
+[![Build Status](https://travis-ci.com/y-yu/install-tex-travis.svg?branch=master)](https://travis-ci.com/y-yu/install-tex-travis)
 
 ## How to use
 
@@ -9,10 +9,14 @@ Install Script for TeXLive2019 to macOS and Linux on Travis CI
 matrix:
   include:
     - os: osx
-      osx_image: xcode10.3
+      osx_image: xcode11.5
 
     - os: linux
       dist: bionic
+
+    - os: windows
+
+language: sh
 
 cache:
   directories:
@@ -20,7 +24,6 @@ cache:
     - $HOME/.texlive
     - $HOME/texmf
 
-sudo: false
 
 before_install:
   - wget https://raw.githubusercontent.com/y-yu/install-tex-travis/master/install-tex.sh
